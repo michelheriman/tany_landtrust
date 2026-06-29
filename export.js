@@ -16,10 +16,9 @@ async function checker() {
 
 
 let exp = document.getElementById('export_kml');
-exp.addEventListener('click', async () =>{
-    const token = await checker();//localStorage.getItem('auth_token'); // or wherever you store it
-    console.log(token);
-    
+exp.addEventListener('click', async () => {
+    const token = await checker();
+
     const response = await fetch(`${API_URL}${API}`, {
         method: 'GET',
         headers: {
@@ -32,13 +31,13 @@ exp.addEventListener('click', async () =>{
         return;
     }
 
-    // Trigger file download
     const blob = await response.blob();
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
     a.download = 'export.kml';
+    document.body.appendChild(a);
     a.click();
-    window.URL.revokeObjectURL(url);
-    
+    document.body.removeChild(a); 
+    window.URL.revokeObjectURL(url); 
 });
