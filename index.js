@@ -47,7 +47,7 @@ async function logout() {
         console.error('Network error during logout:', error);
         // Force redirect anyway — better UX than leaving user stuck
         localStorage.clear();
-        window.location.href = '/signin.html';
+        window.location.href = './signin.html';
     }
 }
 
