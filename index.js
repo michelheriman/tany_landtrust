@@ -37,7 +37,7 @@ async function logout() {
             localStorage.removeItem('user');
 
             // Redirect to login
-            window.location.href = '/signin.html';
+            window.location.href = './signin.html';
         } else {
             console.error('Logout failed:', data.message);
             alert('Logout failed. Please try again.');
